@@ -20,7 +20,8 @@ return new class extends Migration
             $table->foreignId('resident_id')->references('id')->on('users');
             $table->unsignedFloat('price');
             $table->date('payment_date');
-            $table->enum('status', ['paid', 'pending', 'cancelled']);
+            $table->uuid()->unique();
+            $table->enum('status', ['paid', 'pending', 'cancelled'])->default('pending');
             $table->timestamps();
         });
     }

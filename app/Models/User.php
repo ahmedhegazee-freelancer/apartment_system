@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
+        'uuid'
     ];
 
     /**
@@ -41,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function invoices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Invoice::class, 'resident_id', 'id');
+    }
+    public function apartments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Apartment::class, 'resident_id', 'id');
+    }
 }
