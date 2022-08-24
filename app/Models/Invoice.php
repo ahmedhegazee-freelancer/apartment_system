@@ -25,11 +25,11 @@ class Invoice extends Model
         return $this->belongsTo(User::class, 'resident_id');
     }
 
-    public function scopePending(Builder $query)
+    public function scopePending(Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('status', 'pending');
     }
-    public function scopePaid(Builder $query)
+    public function scopePaid(Builder $query): \Illuminate\Database\Eloquent\Builder
     {
         return $query->where('status', 'paid');
     }
